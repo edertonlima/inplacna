@@ -1,0 +1,68 @@
+.footer {
+	background-color: $cinza-escuro;
+	height: 40px;
+}
+
+.box-info-contato {
+	display: block;
+	margin: 50px 0;
+	text-align: center;
+
+	.info-contato {
+		display: inline-block;
+		vertical-align: middle;
+		@include box-sizing;
+
+		&.info-email {
+			width: 370px;
+			padding-left: 70px;
+		}
+
+		&.info-tel {
+			width: 370px;
+			padding-right: 70px;
+			border-right: 2px solid $cinza-escuro;
+		}
+		
+		img {
+			float: left;
+			margin-right: 20px;
+		}
+
+		.item {
+			float: left;
+
+			span {
+				font-weight: $light;
+				float: left;
+				width: 100%;
+				font-size: 1.875rem;
+				line-height: 2rem;
+				margin-bottom: 5px;
+				text-align: left;
+				@include clear;
+
+				&.det-item {
+					color: $azul;
+					margin-bottom: 0;
+
+					a {
+						font-size: 1.375rem;
+						line-height: 1.5rem;
+						color: $azul;
+						font-weight: $light;
+						position: relative;
+						top: -6px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.form-contato {
+	display: block;
+	margin: 30px auto 0;
+	width: 100%;
+	max-width: 395px;
+}

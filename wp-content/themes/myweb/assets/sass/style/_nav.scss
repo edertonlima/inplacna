@@ -1,0 +1,61 @@
+.nav {
+	float: right;
+	@include animacao();
+
+	ul {
+		@include box-sizing;
+
+		li {
+			float: left;
+			@include animacao();
+
+			a {
+				color: #ffffff;
+				display: block;
+				line-height: 72px;
+				font-size: .875rem;
+				padding: 0 25px;
+				font-weight: $light;
+				@include animacao();
+			}
+
+			&.active, &.active:hover {
+				a {
+					background-color: $cinza;
+					color: $azul;
+				}
+			}
+
+			&:hover {
+				a {
+					background-color: darken($azul, 5%);
+				}
+			}
+		}
+	}
+}
+
+/* menu mobile */
+.menu-mobile {
+	color: #ffffff;
+	display: none;
+	z-index: 9999;
+	position: absolute;
+	cursor: pointer;
+	font-size: 2.5rem;
+	top: 28px;
+	right: 50px;
+	@include animacao;
+
+	&.active {
+		color: $verde-limao;
+
+		&:hover {
+			color: #ffffff;
+		}
+	}
+
+	&:hover {
+		color: $verde-limao;
+	}
+}
