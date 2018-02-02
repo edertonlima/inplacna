@@ -8,6 +8,8 @@ body {
 	position: relative;
 	min-height: 100vh;
 	//min-width: $width;
+	padding-top: 72px;
+	@include box-sizing;
 }
 
 body * {
@@ -66,7 +68,7 @@ body * {
 
 	[class*="col-"] {
 		float: left;
-		@include box-sizing();
+		@include box-sizing;
 
 		img {
 			max-width: 100%;
@@ -88,13 +90,17 @@ body * {
 	.col-4:nth-child(3n+1) {
 		@include clear;
 	}
+
+	.col-clear {
+		@include clear;
+	}
 }
 
 .box-content {
 	@include clear;
 	width: 100%;
 	position: relative;
-	padding: 50px 0;
+	padding: 70px 0;
 
 	&.no-padding {
 		padding: 0;

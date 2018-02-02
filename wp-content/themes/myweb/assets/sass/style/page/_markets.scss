@@ -1,0 +1,32 @@
+.list-markets {
+	li {
+		float: left;
+		width: 50%;
+		padding: 0px 60px;
+		@include box-sizing;
+
+		&:nth-child(odd) {
+			border-right: 1px solid #ffffff;
+			@include clear;
+		}
+
+		a {
+			color: #ffffff;
+			font-size: .875rem;
+			position: relative;
+			top: 4px;
+			@include animacao;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		img {
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}

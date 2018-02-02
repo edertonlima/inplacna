@@ -1,6 +1,7 @@
 .footer {
 	background-color: $cinza-escuro;
 	height: 40px;
+	width: 100%;
 }
 
 .box-info-contato {
@@ -14,7 +15,7 @@
 		@include box-sizing;
 
 		&.info-email {
-			width: 370px;
+			width: 380px;
 			padding-left: 70px;
 		}
 

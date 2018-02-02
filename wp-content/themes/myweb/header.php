@@ -174,32 +174,32 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 
 			<nav class="nav">
 				<ul class="menu-principal">
-					<li class="active">
-						<a href="javascript:" title="">
+					<li class="<?php if(is_page('home')){ echo 'active'; } ?>">
+						<a href="<?php echo get_home_url(); ?>" title="HOME">
 							HOME
 						</a>
 					</li>
 
-					<li>
-						<a href="javascript:" title="">
+					<li class="<?php if(is_page('company')){ echo 'active'; } ?>">
+						<a href="<?php echo get_permalink(get_page_by_path('company')); ?>" title="COMPANY">
 							COMPANY
 						</a>
 					</li>
 
-					<li>
-						<a href="javascript:" title="">
+					<li class="<?php if((is_post_type_archive('products')) or (is_tag()) or (is_tax('products_taxonomy')) or (is_singular('products'))){ echo 'active'; } ?>">
+						<a href="<?php echo get_home_url(); ?>/products" title="PRODUCTS">
 							PRODUCTS
 						</a>
 					</li>
 
 					<li>
-						<a href="javascript:" title="">
+						<a href="<?php echo get_home_url(); ?>/#markets" title="MARKETS">
 							MARKETS
 						</a>
 					</li>
 
-					<li>
-						<a href="javascript:" title="">
+					<li class="<?php if(is_page('contact')){ echo 'active'; } ?>">
+						<a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" title="CONTACT">
 							CONTACT
 						</a>
 					</li>
@@ -207,93 +207,6 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 			</nav>
 		</div>
 
-			<i class="fa fa-bars menu-mobile" aria-hidden="true"></i>
-
-			<nav class="nav" style="display: none;">
-				<ul class="menu-principal">
-					<li class="<?php if((is_page('producao')) or (is_post_type_archive('produtos')) or (is_tax('produtos_taxonomy')) or (is_singular('produtos'))){ echo 'active'; } ?>">
-						<a href="javascript:" title="PRODUTOS">
-							PRODUTOS
-						</a>
-						<ul>
-							<li class="submenu <?php if(is_page('producao')){ echo 'active'; } ?>">
-								<a href="<?php echo get_permalink(get_page_by_path('producao')); ?>" title="">
-									<img src="<?php the_field('ico_colorido',get_page_by_path('producao')); ?>">
-									<?php echo get_the_title(get_page_by_path('producao')); ?>
-								</a>
-							</li>
-
-							<li class="submenu <?php if((is_post_type_archive('produtos')) or (is_tax('produtos_taxonomy')) or (is_singular('produtos'))){ echo 'active'; } ?>">
-								<a href="<?php echo get_home_url(); ?>/produtos" title="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-nossos-produtos.png" class="">
-									NOSSOS PRODUTOS
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<li class="<?php if(is_page('sobre')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="SOBRE">
-							<?php echo get_the_title(get_page_by_path('sobre')); ?>
-						</a>
-					</li>
-
-					<li class="menu-home">
-						<h1>
-							<a href="<?php echo get_home_url(); ?>" title="<?php the_field('titulo', 'option'); ?>">
-								<img src="<?php the_field('logo_header', 'option'); ?>" alt="<?php the_field('titulo', 'option'); ?>">
-							</a>
-						</h1>
-					</li>
-
-					<li class="<?php if((is_page(array( 'dicas/cortes-de-carnes', 'dicas/toque-do-chef', 'dicas/toque-do-chef/tempero-da-carne', 'dicas/toque-do-chef/carne-x-carne', 'dicas/toque-do-chef/distancia-do-briquete', 'dicas/toque-do-chef/carne-de-primeira', 'dicas/harmonizacoes', 'dicas/harmonizacoes/cervejas', 'dicas/harmonizacoes/vinhos', 'dicas/harmonizacoes/caipirinhas', 'dicas/churrascometro' ))) or (is_post_type_archive('musicas')) or (is_singular('musicas'))){ echo 'active'; } ?>">
-						<a href="javascript:" title="DICAS">
-							DICAS
-						</a>
-						<ul>
-							<li class="submenu <?php if(is_page('dicas/cortes-de-carnes')){ echo 'active'; } ?>">
-								<a href="<?php echo get_permalink(get_page_by_path('dicas/cortes-de-carnes')); ?>" title="<?php echo get_the_title(get_page_by_path('dicas/cortes-de-carnes')); ?>">
-									<img src="<?php the_field('ico_colorido',get_page_by_path('dicas/cortes-de-carnes')); ?>">
-									<?php echo get_the_title(get_page_by_path('dicas/cortes-de-carnes')); ?>
-								</a>
-							</li>
-
-							<li class="submenu <?php if(is_page(array( 'dicas/toque-do-chef', 'dicas/toque-do-chef/tempero-da-carne', 'dicas/toque-do-chef/carne-x-carne', 'dicas/toque-do-chef/distancia-do-briquete', 'dicas/toque-do-chef/carne-de-primeira' ))){ echo 'active'; } ?>">
-								<a href="<?php echo get_permalink(get_page_by_path('dicas/toque-do-chef')); ?>" title="<?php echo get_the_title(get_page_by_path('dicas/toque-do-chef')); ?>">
-									<img src="<?php the_field('ico_colorido',get_page_by_path('dicas/toque-do-chef')); ?>">
-									<?php echo get_the_title(get_page_by_path('dicas/toque-do-chef')); ?>
-								</a>
-							</li>
-
-							<li class="submenu <?php if(is_page(array( 'dicas/harmonizacoes', 'dicas/harmonizacoes/cervejas', 'dicas/harmonizacoes/vinhos', 'dicas/harmonizacoes/caipirinhas' ))){ echo 'active'; } ?>">
-								<a href="<?php echo get_permalink(get_page_by_path('dicas/harmonizacoes')); ?>" title="<?php echo get_the_title(get_page_by_path('dicas/harmonizacoes')); ?>">
-									<img src="<?php the_field('ico_colorido',get_page_by_path('dicas/harmonizacoes')); ?>">
-									<?php echo get_the_title(get_page_by_path('dicas/harmonizacoes')); ?>
-								</a>
-							</li>
-
-							<li class="submenu <?php if((is_post_type_archive('musicas')) or is_singular('musicas')){ echo 'active'; } ?>">
-								<a href="<?php echo get_home_url(); ?>/musicas" title="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-musicas.png" class="">
-									MÚSICAS
-								</a>
-							</li>
-
-							<li class="submenu <?php if(is_page('churrascometro')){ echo 'active'; } ?>">
-								<a href="<?php echo get_home_url(); ?>/dicas/churrascometro" title="">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-musicas.png" class="">
-									CHURRASCOMETRO
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<li class="<?php if(is_page('contato')){ echo 'active'; } ?>">
-						<a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" title="CONTATO">
-							CONTATO
-						</a>
-					</li>
-				</ul>
-			</nav>
+		<i class="fa fa-bars menu-mobile" aria-hidden="true"></i>
 
 	</header>

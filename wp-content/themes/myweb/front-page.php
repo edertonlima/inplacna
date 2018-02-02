@@ -59,29 +59,34 @@
 	</div>
 </section>
 
-<section class="box-content">
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-8">
-				<p class="destaque">Are you looking for the best packaging solution for your products?</p>
+<?php if(get_field('titulo_chamada_home',get_page_by_path('contact'))){ ?>
+	<section class="box-content">
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-8">
+					<p class="destaque"><?php the_field('titulo_chamada_home',get_page_by_path('contact')); ?></p>
+				</div>
+				<div class="col-4">
+					<a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="button contato-home">Contact us</a>
+				</div>
 			</div>
-			<div class="col-4">
-				<a href="javascript:" class="button contato-home">Contact us</a>
-			</div>
-		</div>
 
-	</div>
-</section>
+		</div>
+	</section>
+<?php } ?>
 
 <section class="box-content azul">
 	<div class="container">
 		
 		<div class="row">
 			<div class="col-12">
-				<h2>About Us</h2>
-				<p class="destaque-mini">Leader in the plastic valve bag market, Inplac offers a variety of flexible packaging solutions for your company.<br><br>Inplac is well known for both technological innovation and services, various winning products and processes have been developed in a pioneering fashion. That is how the company grew and maintains a high level of development.</p>
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-sobre.png" class="center">
+				<h2><?php echo get_the_title(get_page_by_path('company')); ?></h2>
+				<p class="destaque-mini"><?php echo get_the_excerpt(get_page_by_path('company')); ?></p>
+
+				<?php if(get_field('img_home',get_page_by_path('company'))){ ?>
+					<img src="<?php the_field('img_home',get_page_by_path('company')); ?>" class="center img-top-50">
+				<?php } ?>
 			</div>
 		</div>
 
@@ -95,21 +100,77 @@
 			<div class="col-12">
 				<h2>Products</h2>
 			</div>
-		</div>
 
-	</div>
-</section>
+			<div class="list-produtos">
 
-<section class="box-content verde">
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-12">
-				<h2>Markets</h2>
+				<?php
+					$qtd_prod = 0;
+					$args = array(
+					    'taxonomy'      => 'products_taxonomy',
+					    'parent'        => 0,
+					    'orderby'       => 'name',
+					    'order'         => 'ASC',
+					    'hierarchical'  => 1,
+					    'pad_counts'    => 0
+					);
+					$categories = get_categories( $args );
+					foreach ( $categories as $categoria ){
+
+						$field_cat = 'products_taxonomy_'.$categoria->term_taxonomy_id; ?>
+
+						<a href="<?php echo get_term_link($categoria->term_id); ?>" class="col-6">
+							<img src="<?php the_field('img_categoria', $field_cat); ?>" class="center">
+							<h4><?php echo $categoria->name; ?></h4>
+							<p class="justify-left"><?php echo $categoria->description; ?></p>
+						</a>
+
+					<?php }
+				?>
+
 			</div>
 		</div>
 
 	</div>
 </section>
+
+
+<?php 
+	$markets = get_terms( array(
+	    'taxonomy' => 'post_tag',
+	    'hide_empty' => true,
+	) );
+
+	if(count($markets)){ ?>
+
+		<section class="box-content verde" id="markets">
+			<div class="container">
+				
+				<div class="row">
+					<div class="col-12">
+						<h2>Markets</h2>
+						<ul class="list-markets">
+
+
+							<?php //var_dump($markets);
+
+							foreach ( $markets as $market ){ 
+								$field_tag = 'post_tag_'.$market->term_taxonomy_id; ?>
+								<li>
+									<img src="<?php the_field('icone',$field_tag); ?>">
+									<a href="<?php echo get_category_link( $market->term_id ); ?>" title="<?php echo $market->name; ?>"><?php echo $market->name; ?></a></li>
+							<?php } ?>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+	<?php }
+?>
+
+
+<?php get_template_part( 'content-contato' ); ?>
 
 <?php get_footer(); ?>

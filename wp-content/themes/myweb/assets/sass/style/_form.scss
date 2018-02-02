@@ -90,6 +90,14 @@ input[type='submit'], .button {
 		text-transform: none;
 		float: right;
 	}
+
+	&.enviar-contato {
+		background-color: $amarelo;
+
+		&:hover {
+			background-color: darken($amarelo, 10%);
+		}
+	}
 }
 
 .select {

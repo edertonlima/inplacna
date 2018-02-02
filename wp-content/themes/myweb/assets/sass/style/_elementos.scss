@@ -3,7 +3,7 @@ strong {
 }
 
 h1 {
-	margin-top: 6px;
+	margin-top: 9px;
 	max-width: $wLogo;
 	width: 100%;
 	z-index: 9999;
@@ -39,7 +39,11 @@ h3 {
 }
 
 h4 {
-
+	font-weight: $light;
+	font-size: 1.225rem;
+	line-height: 1.5rem;
+	display: block;
+	color: $azul;
 }
 
 h5 {
@@ -73,6 +77,10 @@ p {
 		max-width: 510px;
 		margin: 0 auto;
 	}
+
+	&.cinza {
+		color: darken($cinza-escuro, 10%);
+	}
 	
 	@media all and (max-width: 770px){
 		font-size: 1.25rem;
@@ -90,8 +98,8 @@ p {
 
 .justify-center {
 	text-align: justify;  
-	/*-moz-text-align-last: center;
-	text-align-last: center;*/
+	-moz-text-align-last: center;
+	text-align-last: center;
 }
 
 .justify-left {
@@ -114,8 +122,12 @@ p {
 
 img {
 	&.center {
-		margin: 20px auto;
+		margin: 0px auto;
 		display: block;
+	}
+
+	&.img-top-50 {
+		margin-top: 50px;
 	}
 }
 

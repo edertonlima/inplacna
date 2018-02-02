@@ -51,10 +51,6 @@ add_filter( 'body_class', function( $classes ) {
     return array_merge( $classes, array( 'page' ) );
 } );
 
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
-@ini_set( 'max_execution_time', '300' );
-
 function gera_url_encurtada($url){
     $url = urlencode($url);
     $xml =  simplexml_load_file("http://migre.me/api.xml?url=$url");
@@ -116,18 +112,6 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Geral',
 		'parent_slug'	=> 'configuracoes-geral',
 	));
-
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Músicas',
-		'menu_title'	=> 'Músicas',
-		'parent_slug'	=> 'configuracoes-geral',
-	));
-
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Produtos',
-		'menu_title'	=> 'Produtos',
-		'parent_slug'	=> 'configuracoes-geral',
-	));
 }
 
 /* PAGINAÇÃO */
@@ -157,126 +141,9 @@ function paginacao() {
 
 // NOVOS POST TYPES 
 
-	function representantes_post_type(){
-		register_post_type('representantes', array( 
-			'labels'            =>  array(
-				'name'          =>      __('Onde Encontrar'),
-				'singular_name' =>      __('Onde Encontrar'),
-				'all_items'     =>      __('Todos'),
-				'add_new'       =>      __('Adicionar'),
-				'add_new_item'  =>      __('Adicionar'),
-				'edit_item'     =>      __('Editar'),
-				'view_item'     =>      __('Visualizar'),
-				'search_items'  =>      __('Pesquisar'),
-				'no_found'      =>      __('Nenhum item encontrato'),
-				'not_found_in_trash' => __('A lixeira está vazia.')
-			),
-			'public'            =>  true,
-			'publicly_queryable'=>  true,
-			'show_ui'           =>  true, 
-			'query_var'         =>  true,
-			'show_in_nav_menus' =>  false,
-			'capability_type'   =>  'post',
-			'hierarchical'      =>  true,
-			'rewrite'=> [
-				'slug' => 'representantes',
-				"with_front" => false
-			],
-			"cptp_permalink_structure" => "/%post_id%/",
-			'menu_position'     =>  21,
-			'supports'          =>  array('title'),
-			'has_archive'       =>  true,
-			'menu_icon' => 'dashicons-groups'
-		));
-		flush_rewrite_rules();
-	}
-	add_action('init', 'representantes_post_type');
-	function representantes_taxonomy() {  
-		register_taxonomy(  
-			'representantes_taxonomy',  
-			'representantes',        
-			array(
-				'label' => __( 'Categorias' ),
-				'rewrite'=> [
-					'slug' => 'representantes',
-					"with_front" => false
-				],
-				"cptp_permalink_structure" => "/representantes/",
-				'hierarchical'               => true,
-				'public'                     => true,
-				'show_ui'                    => true,
-				'show_admin_column'          => true,
-				'show_in_nav_menus'          => true,
-				'query_var' => true
-			) 
-		);  
-	}  
-	add_action( 'init', 'representantes_taxonomy');
-
-
 	/* POST TYPE */
-	function musicas_post_type(){
-		register_post_type('musicas', array( 
-			'labels'            =>  array(
-				'name'          =>      __('Músicas'),
-				'singular_name' =>      __('Músicas'),
-				'all_items'     =>      __('Todas as músicas'),
-				'add_new'       =>      __('Adicionar novo'),
-				'add_new_item'  =>      __('Adicionar novo'),
-				'edit_item'     =>      __('Editar'),
-				'view_item'     =>      __('Visualizar'),
-				'search_items'  =>      __('Pesquisar'),
-				'no_found'      =>      __('Nenhum item encontrato'),
-				'not_found_in_trash' => __('A lixeira está vazia.')
-			),
-			'public'            =>  true,
-			'publicly_queryable'=>  true,
-			'show_ui'           =>  true, 
-			'query_var'         =>  true,
-			'show_in_nav_menus' =>  false,
-			'capability_type'   =>  'post',
-			'hierarchical'      =>  true,
-			'rewrite'=> [
-				'slug' => 'musicas',
-				"with_front" => false
-			],
-			"cptp_permalink_structure" => "/%postname%/",
-			'menu_position'     =>  21,
-			'supports'          =>  array('title','excerpt','thumbnail','editor'),
-			'has_archive'       =>  true,
-			'menu_icon' => 'dashicons-format-audio'
-		));
-		flush_rewrite_rules();
-	}
-	add_action('init', 'musicas_post_type');
-	/*function musicas_taxonomy() {  
-		register_taxonomy(  
-			'musicas_taxonomy',  
-			'musicas',        
-			array(
-				'label' => __( 'Categorias' ),
-				'rewrite'=> [
-					'slug' => 'musicas',
-					"with_front" => false
-				],
-				"cptp_permalink_structure" => "/musicas/",
-				'hierarchical'               => true,
-				'public'                     => true,
-				'show_ui'                    => true,
-				'show_admin_column'          => true,
-				'show_in_nav_menus'          => true,
-				'query_var' => true
-			) 
-		);  
-	}  
-	add_action( 'init', 'musicas_taxonomy');
-	/* POST TYPE */
-
-
-
-	/* POST TYPE */
-	function produtos_post_type(){
-		register_post_type('produtos', array( 
+	function products_post_type(){
+		register_post_type('products', array( 
 			'labels'            =>  array(
 				'name'          =>      __('Produtos'),
 				'singular_name' =>      __('Produtos'),
@@ -297,10 +164,10 @@ function paginacao() {
 			'capability_type'   =>  'post',
 			'hierarchical'      =>  true,
 			'rewrite'=> [
-				'slug' => 'produtos',
+				'slug' => 'products',
 				"with_front" => false
 			],
-			"cptp_permalink_structure" => "/%produtos_taxonomy%/%postname%/",
+			"cptp_permalink_structure" => "/%products_taxonomy%/%postname%/",
 			'menu_position'     =>  21,
 			'supports'          =>  array('title','editor','excerpt','thumbnail'),
 			'has_archive'       =>  true,
@@ -308,18 +175,18 @@ function paginacao() {
 		));
 		flush_rewrite_rules();
 	}
-	add_action('init', 'produtos_post_type');
-	function produtos_taxonomy() {  
+	add_action('init', 'products_post_type');
+	function products_taxonomy() {  
 		register_taxonomy(  
-			'produtos_taxonomy',  
-			'produtos',        
+			'products_taxonomy',  
+			'products',        
 			array(
 				'label' => __( 'Categorias' ),
 				'rewrite'=> [
-					'slug' => 'produtos',
+					'slug' => 'products',
 					"with_front" => false
 				],
-				"cptp_permalink_structure" => "/%produtos_taxonomy%/",
+				"cptp_permalink_structure" => "/%products_taxonomy%/",
 				'hierarchical'               => true,
 				'public'                     => true,
 				'show_ui'                    => true,
@@ -329,7 +196,12 @@ function paginacao() {
 			) 
 		);  
 	}  
-	add_action( 'init', 'produtos_taxonomy');
+	add_action( 'init', 'products_taxonomy');
+
+	add_action( 'init', 'gp_register_taxonomy_for_object_type' );
+	function gp_register_taxonomy_for_object_type() {
+		register_taxonomy_for_object_type( 'post_tag', 'products' );
+	};
 	/* POST TYPE */
 
 

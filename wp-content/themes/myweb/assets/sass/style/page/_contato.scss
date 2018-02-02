@@ -1,0 +1,75 @@
+.contato-page {
+	p {
+		font-weight: $light;
+	}
+
+	form, .iframe {
+		margin-top: 30px;
+	}
+
+	.iframe, .img-map {
+		height: 200px;
+		width: 100%;
+		border: 1px solid $cinza-escuro;
+		border-radius: 5px;
+	}
+
+	.iframe {
+		overflow: hidden;
+		iframe {
+			height: 198px;
+			width: 100%;
+		}
+	}
+
+	.img-map {
+		height: auto;
+	}
+
+	.endereco {
+		display: block;
+		border-bottom: 1px solid $cinza-escuro;
+		padding-bottom: 15px;
+		line-height: 1rem;
+		color: darken($cinza-escuro, 10%);
+		margin-top: 10px;
+	}
+
+	.box-info-contato {
+		margin: 25px 0 0;
+
+		.info-contato {
+			padding: 0;
+			border: 0;
+
+			&.info-tel {
+				margin-bottom: 30px;
+			}
+
+			.item {
+				span:not(.det-item) {
+					color: darken($cinza-escuro, 10%);
+				}
+
+				span {
+					font-size: 1.5rem;
+					line-height: 1.6rem;
+				}
+			}
+		}
+	}
+
+	&.curriculo {
+		.container {
+			border-top: 1px solid $cinza-escuro;
+		}
+
+		h2 {
+			margin-top: 70px;
+		}
+
+		input, textarea {
+			border-color: $amarelo;
+		}
+	}
+}
