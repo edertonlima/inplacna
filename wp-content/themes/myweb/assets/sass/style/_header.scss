@@ -5,4 +5,30 @@
 	background-color: $azul;
 	z-index: 999;
 	top: 0;
+
+	&.active {
+		.nav {
+			display: table;
+			width: 100%;
+			background-color: $azul;
+			height: 100vh;
+			padding-top: 80px;
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			ul {
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				li {
+					width: 100%;
+
+					a {
+						font-size: 1.5rem;
+					}
+				}
+			}
+		}	
+	}
 }
