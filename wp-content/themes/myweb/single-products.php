@@ -53,6 +53,13 @@
 							<img src="<?php echo $imagem[0]; ?>" class="center">
 						<?php } ?>
 
+						<?php $galeria = get_field('galeria');
+							if( $galeria ):
+								foreach( $galeria as $imagem ): ?>
+								<img src="<?php echo $imagem['url']; ?>"/>
+							<?php endforeach; ?>
+						<?php endif; ?>
+
 						<div class="cont-prod justify-left">
 							<?php the_content(); ?>
 						</div>
