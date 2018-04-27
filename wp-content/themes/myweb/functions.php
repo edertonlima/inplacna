@@ -201,74 +201,83 @@ function paginacao() {
 	/* POST TYPE */
 
 
-$producao = false;
-if($producao){
-	add_action('admin_head', 'my_custom_fonts');
-
-	function my_custom_fonts() {
-	  echo '<style>
-		#menu-media, #menu-comments, /*#menu-appearance, #menu-plugins, */#menu-tools, #menu-settings, #toplevel_page_edit-post_type-acf, #toplevel_page_edit-post_type-acf-field-group, 
-		#toplevel_page_zilla-likes, 
-		#screen-options-link-wrap, 
-		.acf-postbox h2 a, 
-		#the-list #post-94, 
-		#the-list #post-65, 
-		#commentstatusdiv, 
-		#commentsdiv, 
-		#toplevel_page_wpglobus_options, 
-		.taxonomy-category .form-field.term-parent-wrap, 
-		.wp-menu-separator, 
-		#menu-appearance li:nth-child(1), 
-		#menu-appearance li:nth-child(2), 
-		#menu-appearance li:nth-child(3) 
-		{
-			display: none!important;
-		}
-	  </style>';
-
-	  echo '
-		<script type="text/javascript">
-			jQuery.noConflict();
-
-			jQuery("document").ready(function(){
-				jQuery("#menu-media").remove();
-				jQuery("#menu-comments").remove();
-				/*jQuery("#menu-appearance").remove();
-				jQuery("#menu-plugins").remove();*/
-				jQuery("#menu-tools").remove();
-				jQuery("#menu-settings").remove();
-				jQuery("#toplevel_page_edit-post_type-acf").remove();
-				jQuery("#toplevel_page_edit-post_type-acf-field-group").remove();
-				jQuery("#toplevel_page_zilla-likes").html("");
-				jQuery(".taxonomy-category .form-field.term-parent-wrap").remove();
-				jQuery(".wp-menu-separator").remove();
-				jQuery("#toplevel_page_pmxi-admin-home li:nth-child(1)").remove();
-				jQuery("#toplevel_page_pmxi-admin-home li:nth-child(3)").remove();
-				jQuery("#toplevel_page_pmxi-admin-home li:nth-child(4)").remove();
-				jQuery("#toplevel_page_pmxi-admin-home li:nth-child(5)").remove();
-				jQuery("#toplevel_page_wpglobus_options").remove();
-				jQuery("#commentstatusdiv").remove();
-				jQuery("#commentsdiv").remove();
-
-				jQuery(".user-rich-editing-wrap").remove();
-				jQuery(".user-admin-color-wrap").remove();
-				jQuery(".user-comment-shortcuts-wrap").remove();
-				jQuery(".user-admin-bar-front-wrap").remove();
-				jQuery(".user-language-wrap").remove();
-
-				jQuery("#toplevel_page_delete_all_posts").detach().insertBefore("#toplevel_page_pmxi-admin-home");
-				jQuery("#toplevel_page_delete_all_posts .wp-menu-name").html("Apagar Lojas");
-				jQuery("#toplevel_page_delete_all_posts .wp-first-item .wp-first-item").html("Apagar Todas");
-				jQuery("#toplevel_page_delete_all_posts ul").remove();
-
-				jQuery("#menu-appearance li:nth-child(1)").remove();
-				//jQuery("#menu-appearance li:nth-child(2)").remove();
-				//jQuery("#menu-appearance li:nth-child(3)").remove();
-			});
-		</script>
-	  ';
+	if(wp_get_current_user()->ID == 1){
+		$producao = false;
+	}else{
+		$producao = false;
 	}
-}
+
+	if($producao){
+		add_action('admin_head', 'my_custom_fonts');
+
+		function my_custom_fonts() {
+		  echo '<style>
+			#menu-media, #menu-comments, #menu-appearance, #menu-plugins, #menu-tools, #menu-settings, #toplevel_page_edit-post_type-acf, #toplevel_page_edit-post_type-acf-field-group, 
+			#toplevel_page_zilla-likes, 
+		  	#menu-posts li:nth-child(4), 
+			#screen-options-link-wrap, 
+			.acf-postbox h2 a, 
+			#the-list #post-94, 
+			#the-list #post-65, 
+			#commentstatusdiv, 
+			#commentsdiv, 
+			#toplevel_page_wpglobus_options, 
+			.taxonomy-category .form-field.term-parent-wrap, 
+			.wp-menu-separator 
+			{
+				display: none!important;
+			} 
+
+			#categories, .column-categories {
+				text-indent: -10000px;
+			}
+		  </style>';
+
+		  echo '
+			<script type="text/javascript">
+				jQuery.noConflict();
+
+				jQuery("document").ready(function(){
+					jQuery("#menu-media").remove();
+					jQuery("#menu-comments").remove();
+					jQuery("#menu-appearance").remove();
+					jQuery("#menu-plugins").remove();
+					jQuery("#menu-tools").remove();
+					jQuery("#menu-settings").remove();
+					jQuery("#toplevel_page_edit-post_type-acf").remove();
+					jQuery("#toplevel_page_edit-post_type-acf-field-group").remove();
+					jQuery("#toplevel_page_zilla-likes").html("");
+					jQuery(".taxonomy-category .form-field.term-parent-wrap").remove();
+					jQuery(".wp-menu-separator").remove();
+					jQuery("#toplevel_page_pmxi-admin-home li:nth-child(1)").remove();
+					jQuery("#toplevel_page_pmxi-admin-home li:nth-child(3)").remove();
+					jQuery("#toplevel_page_pmxi-admin-home li:nth-child(4)").remove();
+
+					jQuery("#menu-posts li:nth-child(4)").remove();
+
+					jQuery("#categories").html("");
+					jQuery(".column-categories").html("");
+
+					jQuery("#toplevel_page_pmxi-admin-home li:nth-child(5)").remove();
+					jQuery("#toplevel_page_wpglobus_options").remove();
+					jQuery("#commentstatusdiv").remove();
+					jQuery("#commentsdiv").remove();
+
+					jQuery(".user-rich-editing-wrap").remove();
+					jQuery(".user-admin-color-wrap").remove();
+					jQuery(".user-comment-shortcuts-wrap").remove();
+					jQuery(".user-admin-bar-front-wrap").remove();
+					jQuery(".user-language-wrap").remove();
+
+					jQuery("#toplevel_page_delete_all_posts").detach().insertBefore("#toplevel_page_pmxi-admin-home");
+					jQuery("#toplevel_page_delete_all_posts .wp-menu-name").html("Apagar Lojas");
+					jQuery("#toplevel_page_delete_all_posts .wp-first-item .wp-first-item").html("Apagar Todas");
+					jQuery("#toplevel_page_delete_all_posts ul").remove();
+				});
+			</script>
+		  ';
+		}
+	}
 
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '64M');

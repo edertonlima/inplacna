@@ -17,7 +17,7 @@
 					<div class="col-6">
 						<form action="javascript:" class="row contato">
 							<fieldset class="col-12">
-								<input type="text" name="nome" id="nome" placeholder="Nome:">
+								<input type="text" name="nome" id="nome" placeholder="Name:">
 							</fieldset>
 
 							<fieldset class="col-12">
@@ -25,7 +25,7 @@
 							</fieldset>
 
 							<fieldset class="col-6">
-								<input type="text" name="fone" id="fone" placeholder="Fone:">
+								<input type="text" name="fone" id="fone" placeholder="Phone:">
 							</fieldset>
 
 							<fieldset class="col-6 col-clear">
@@ -37,7 +37,7 @@
 							</fieldset>
 
 							<fieldset class="col-12">
-								<textarea name="mensagem" id="mensagem" placeholder="Mensagem:"></textarea>
+								<textarea name="mensagem" id="mensagem" placeholder="Message:"></textarea>
 							</fieldset>
 
 							<fieldset class="col-12 center">
@@ -66,7 +66,7 @@
 							<div class="info-contato info-tel">
 								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-cel.png">
 								<div class="item">
-									<span>Call Us</span>
+									<span>Phone</span>
 									<?php if(get_field('telefone_1','option')){ ?>
 										<span class="det-item"><?php the_field('telefone_1','option'); ?></span>
 									<?php } ?>
@@ -105,7 +105,7 @@
 					<div class="col-6">
 						<form action="javascript:" class="row curriculo">
 							<fieldset class="col-12">
-								<input type="text" name="nome" id="nome" placeholder="Nome:">
+								<input type="text" name="nome" id="nome" placeholder="Name:">
 							</fieldset>
 
 							<fieldset class="col-12">
@@ -113,7 +113,7 @@
 							</fieldset>
 
 							<fieldset class="col-6">
-								<input type="text" name="fone" id="fone" placeholder="Fone:">
+								<input type="text" name="fone" id="fone" placeholder="Phone:">
 							</fieldset>
 
 							<fieldset class="col-6 col-clear">

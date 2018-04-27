@@ -15,7 +15,7 @@
 					<div class="info-contato info-tel">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-cel.png">
 						<div class="item">
-							<span>Call Us</span>
+							<span>Phone</span>
 							<?php if(get_field('telefone_1','option')){ ?>
 								<span class="det-item"><?php the_field('telefone_1','option'); ?></span>
 							<?php } ?>
